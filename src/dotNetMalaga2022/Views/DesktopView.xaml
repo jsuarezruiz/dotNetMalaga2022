@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="dotNetMalaga2022.Views.DesktopView">
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Before File">
+            <MenuFlyoutItem 
+                Clicked="OnMenuItemItemClicked" 
+                Text="Before File Action" />
+            <MenuFlyoutItem 
+                Text="Cool item 1" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem 
+                Text="Cool item 2" />
+        </MenuBarItem>
+        <MenuBarItem 
+            Text="File">
+            <MenuFlyoutItem 
+                Clicked="OnMenuItemItemClicked" 
+                Text="Custom File">
+                <!--
+                <MenuFlyoutItem.IconImageSource>
+                    <FontImageSource
+                            FontAutoScalingEnabled="False"
+                            FontFamily = "Ionicons" 
+                            Glyph = "&#xf30c;">
+                    </FontImageSource>
+                </MenuFlyoutItem.IconImageSource>
+                -->
+            </MenuFlyoutItem>
+        </MenuBarItem>
+        <MenuBarItem Text="Custom Menu">
+            <MenuFlyoutItem 
+                Clicked="OnMenuItemItemClicked" 
+                Text="Item 1" />
+            <MenuFlyoutSubItem 
+                Clicked="OnMenuItemItemClicked"
+                Text="Sub Menu 1">
+                <MenuFlyoutItem 
+                    IconImageSource="menuicon.png"
+                    Clicked="OnMenuItemItemClicked" Text="Flyout item 1" />
+                <MenuFlyoutItem                   
+                    IconImageSource="menuicon.png" 
+                    Clicked="OnMenuItemItemClicked" Text="Flyout item 2" />
+            </MenuFlyoutSubItem>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+    <StackLayout
+        Padding="12">
+        <Label 
+            x:Name="MenuLabel"
+            ToolTipProperties.Text="Tooltips!"
+            Text="You clicked on Menu Item:" />
+        <Entry 
+            Placeholder="Has a custom context menu"
+            x:Name="EntryWithContextFlyout">
+            <FlyoutBase.ContextFlyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem 
+                        Text="Show text in a message" 
+                        Clicked="OnEntryShowTextClicked" />
+                    <MenuFlyoutItem 
+                        Text="Add some text"
+                        Clicked="OnEntryAddTextClicked" />
+                    <MenuFlyoutItem 
+                        Text="Clear all text" 
+                        Clicked="OnEntryClearTextClicked" />
+                </MenuFlyout>
+            </FlyoutBase.ContextFlyout>
+        </Entry>
+        <Label 
+            Text="Current Window Frame:" />
+        <Label 
+            Text="{Binding Window.X, StringFormat='X = {0:0.00}'}" />
+        <Label 
+            Text="{Binding Window.Y, StringFormat='Y = {0:0.00}'}" />
+        <Label 
+            Text="{Binding Window.Width, StringFormat='W = {0:0.00}'}" />
+        <Label 
+            Text="{Binding Window.Height, StringFormat='H = {0:0.00}'}" />
+        <Button
+            Clicked="OnNewWindowClicked"
+            Text="Open a new Window" />
+        <Button
+            Clicked="OnSetCustomSize"
+            Text="Set window size to 700x500" />
+        <Label 
+            x:Name="HoverLabel"
+            FontSize="24"
+            Text="Hover me!">
+            <Label.GestureRecognizers>
+                <PointerGestureRecognizer 
+                    PointerEntered="OnHoverBegan"
+                    PointerExited="OnHoverEnded" 
+                    PointerMoved="OnHoverMoved" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Label 
+            x:Name="PositionLabel"
+            Text="Hover above label to reveal pointer position"/>
+        <Label 
+            x:Name="PositionToWindow" />
+        <Label 
+            x:Name="PositionToThisLabel" />
+    </StackLayout>
+</ContentPage>

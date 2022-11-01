@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="dotNetMalaga2022.MainPage"
+    Title="dotNetMalaga 2022">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="12">
+            <Image
+                Source="dotnetmalaga.png"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+            <Button
+                Text="Border"
+                Clicked="OnBorderClicked" />
+            <Button
+                Text="Shadows"
+                Clicked="OnShadowsClicked" />
+            <Button
+                Text="Desktop Enhancements"
+                Clicked="OnDesktopClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
